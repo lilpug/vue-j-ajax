@@ -10,3 +10,8 @@ vue-ajax also has the following features:-
 **Note:** vue-ajax requires you to have already loaded jQuery before using the library.
 
 **coming shortly...**
+
+## Copyright and License
+Copyright &copy; David Whitehead
+
+You do not have to do anything special by using the MIT license and you don't have to notify anyone that your using this license. You are free to use, modify and distribute this software in normal and commercial usage as long as the copyright header is left intact (specifically the comment block which starts with /*!).
