@@ -1,7 +1,7 @@
 ﻿/*!
     Title: vue-j-ajax
     URL: https://github.com/lilpug/vue-j-ajax
-    Version: 1.1.0
+    Version: 1.2.0
     Author: David Whitehead
     Copyright (c) David Whitehead
     Copyright license: MIT
@@ -12,6 +12,37 @@ var VueJAjax =
 {
     install: function (Vue, options)
     {
+		//Adds a global prototype function that converts a data object from null to undefined format so it does not go to the server as "null"
+		//Note: this is needed as vuejs uses the default null state internally and can be often sent to the server as "null"
+		Vue.prototype.$ObjectNullToUndefined = function (data)
+        {
+			//Creates a new object
+			var filteredData = {};
+			
+			//Loops over the data object
+			$.each(data, function(key, value)
+			{
+				//Checks if the property is null if so sets it to undefined
+				if(value === null)
+				{
+					filteredData[key] = undefined;
+				}
+				//Checks if the property is another object type and if so recursively pushes it through the same function
+				else if(typeof value === "object" (!(value instanceof File) && !(value instanceof FileList) && !(value instanceof Array)))
+				{
+					filteredData[key] = this.$ObjectNullToUndefined(value);
+				}
+				//Otherwise simply add the generic value for the property
+				else
+				{
+					filteredData[key] = value;
+				}
+			}).bind(this);
+			
+			//Returns the updated object data
+			return filteredData;
+		};
+		
         //Adds a global prototype function to convert object data to formdata recursively
         Vue.prototype.$ConvertObjectToFormData = function (data, formData, parentName)
         {
@@ -112,7 +143,12 @@ var VueJAjax =
                         
                     //If there is parameters to send convert it to form data
                     var formData = null;
-                    if (options.parameters) {
+                    if (options.parameters) 
+					{
+						//Converts any null instances to undefined so the server understands them correctly
+						this.$ObjectNullToUndefined(options.parameters);
+						
+						//Processes the data object into formdata format
                         formData = this.$ConvertObjectToFormData(options.parameters);
                     }
                         
@@ -165,7 +201,12 @@ var VueJAjax =
 
                     //If there is parameters to send convert it to form data
                     var formData = null;
-                    if (options.parameters) {
+                    if (options.parameters) 
+					{
+						//Converts any null instances to undefined so the server understands them correctly
+						this.$ObjectNullToUndefined(options.parameters);
+						
+						//Processes the data object into formdata format
                         formData = this.$ConvertObjectToFormData(options.parameters);
                     }
 
