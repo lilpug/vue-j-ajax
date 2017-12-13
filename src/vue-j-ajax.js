@@ -1,7 +1,7 @@
 ﻿/*!
     Title: vue-j-ajax
     URL: https://github.com/lilpug/vue-j-ajax
-    Version: 1.2.0
+    Version: 1.3.0
     Author: David Whitehead
     Copyright (c) David Whitehead
     Copyright license: MIT
@@ -28,7 +28,7 @@ var VueJAjax =
 					filteredData[key] = undefined;
 				}
 				//Checks if the property is another object type and if so recursively pushes it through the same function
-				else if(typeof value === "object" (!(value instanceof File) && !(value instanceof FileList) && !(value instanceof Array)))
+				else if(typeof value === "object" & (!(value instanceof File) && !(value instanceof FileList) && !(value instanceof Array)))
 				{
 					filteredData[key] = this.$ObjectNullToUndefined(value);
 				}
@@ -37,7 +37,7 @@ var VueJAjax =
 				{
 					filteredData[key] = value;
 				}
-			}).bind(this);
+			}.bind(this));
 			
 			//Returns the updated object data
 			return filteredData;
