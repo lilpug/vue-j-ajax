@@ -1,7 +1,7 @@
 ﻿/*!
     Title: vue-j-ajax
     URL: https://github.com/lilpug/vue-j-ajax
-    Version: 1.4.0
+    Version: 1.5.0
     Author: David Whitehead
     Copyright (c) David Whitehead
     Copyright license: MIT
@@ -146,10 +146,10 @@ var VueJAjax =
                     if (options.parameters) 
 					{
 						//Converts any null instances to undefined so the server understands them correctly
-						this.$ObjectNullToUndefined(options.parameters);
+						formData = this.$ObjectNullToUndefined(options.parameters);
 						
 						//Processes the data object into formdata format
-                        formData = this.$ConvertObjectToFormData(options.parameters);
+                        formData = this.$ConvertObjectToFormData(formData);
                     }
                         
                     //Runs and returns the ajax methods promise and hits the callbacks if supplied
@@ -204,10 +204,10 @@ var VueJAjax =
                     if (options.parameters) 
 					{
 						//Converts any null instances to undefined so the server understands them correctly
-						this.$ObjectNullToUndefined(options.parameters);
+						formData = this.$ObjectNullToUndefined(options.parameters);
 						
 						//Processes the data object into formdata format
-                        formData = this.$ConvertObjectToFormData(options.parameters);
+                        formData = this.$ConvertObjectToFormData(formData);
                     }
 
                     //Note: this has to be done here as the "this" context cannot be passed through otherwise.
