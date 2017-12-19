@@ -1,7 +1,7 @@
 ﻿/*!
     Title: vue-j-ajax
     URL: https://github.com/lilpug/vue-j-ajax
-    Version: 1.3.0
+    Version: 1.4.0
     Author: David Whitehead
     Copyright (c) David Whitehead
     Copyright license: MIT
@@ -139,7 +139,7 @@ var VueJAjax =
                         };
 
                     //Merges the default options with the supplied one so we have all variable requirements
-                    options = Object.assign(defaultOptions, options);
+                    options = $.extend(defaultOptions, options);
                         
                     //If there is parameters to send convert it to form data
                     var formData = null;
@@ -197,7 +197,7 @@ var VueJAjax =
                         };
 
                     //Merges the default options with the supplied one so we have all variable requirements
-                    options = Object.assign(defaultOptions, options);
+                    options = $.extend(defaultOptions, options);
 
                     //If there is parameters to send convert it to form data
                     var formData = null;
