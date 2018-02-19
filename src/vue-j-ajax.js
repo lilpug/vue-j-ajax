@@ -1,7 +1,7 @@
 ﻿/*!
     Title: vue-j-ajax
     URL: https://github.com/lilpug/vue-j-ajax
-    Version: 1.5.0
+    Version: 1.6.0
     Author: David Whitehead
     Copyright (c) David Whitehead
     Copyright license: MIT
@@ -118,8 +118,8 @@ var VueJAjax =
                 'VueJAjaxClearProgressData': function () {
                     this.fileUploadProgress.totalSize = null;
                     this.fileUploadProgress.currentUploadSize = null;
-                    this.fileUploadProgress.percentage = null;
-                    this.fileUploadProgress.roundedPercentage = null;
+                    this.fileUploadProgress.percentage = 0;
+                    this.fileUploadProgress.roundedPercentage = 0;
                 },
 
                 //This wraps the default form data ajax call and exposes its call back functions
@@ -272,7 +272,7 @@ var VueJAjax =
                     })
                     .fail(function (e) {
                         if (options.calculateProgress && options.autoClearProgress) {
-                            this.VueClearProgressData();
+                            this.VueJAjaxClearProgressData();
                         }
 
                         if (options.failCallBack) {
@@ -281,7 +281,7 @@ var VueJAjax =
                     }.bind(this))
                     .done(function (data) {
                         if (options.calculateProgress && options.autoClearProgress) {
-                            this.VueClearProgressData();
+                            this.VueJAjaxClearProgressData();
                         }
 
                         if (options.doneCallBack) {
